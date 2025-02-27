@@ -9,7 +9,7 @@
 </script>
 
 <template>
-
+    <h1>Devices Page!</h1>
 </template>
 
 <style scoped lang="scss">
