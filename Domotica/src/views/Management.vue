@@ -6,6 +6,6 @@
     <h1>Management Page!</h1>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
     
 </style>
