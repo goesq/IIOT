@@ -1,41 +1,51 @@
 <script setup lang="ts">
-    import { Environment } from "@/models/devices";
-    import { reactive, ref} from 'vue';
-    import { Device } from "@/models/devices";
+    import { Device, Environment } from '@/models/devices';
+    import { reactive, ref } from 'vue';
 
     const environments: Array<Environment> = reactive([]);
-    
+        
     const ar: Device = reactive(new Device());
     ar.name = 'Ar condicionado';
-    ar.color = '#ba1307'
+    ar.color = '#3266a8';
+    ar.icon = 'mode_fan';
 
     const tv: Device = reactive(new Device());
     tv.name = 'Smart TV';
-    tv.color = '#f2f244'
-    tv.state = true;
+    tv.color = '#a5c949';
+    tv.state = true;   
+    tv.icon = 'tv_gen';
 
     const iluminacao: Device = reactive(new Device());
     iluminacao.name = 'Iluminação';
-    iluminacao.color = '#00eddd'
+    iluminacao.color = '#4d0d75';
+    iluminacao.icon = 'Lightbulb';
+
+    const tomada: Device = reactive(new Device());
+    tomada.name = 'Tomada Inteligente';
+    tomada.color = '#4d0d75';
 
     const sala: Environment = reactive(new Environment());
     sala.name = 'Sala';
-    sala.devices = [ar,tv,iluminacao];
-    //sala.devices.push(ar);
-    //sala.devices.push(tv);
-    //sala.devices.push(iluminacao);
-    //sala.devices = [...sala.devices,tomada];
-    //sala.devices = [ar,tv,iluminacao,tomada];
-
+    sala.devices = [ar,tv,iluminacao,tomada];
     environments.push(sala);
 
 </script>
 
 <template>
-    <main class="flex flex-column">
-        <h1>Devices Page!</h1>
-        <section class="environments flex flex-colunm">
-
+    <main class="flex flex-column text-center justify-content-center align-items-center">
+        <h1>Devices page</h1>
+        <section class="environments flex flex-column border-round-sm">
+            <div class="device" v-for="(environment, env_id) in environments" :key="env_id">
+                <h3>{{ environment.name }}</h3>
+                <div v-for="(device, dev_id) in environment.devices" :key="dev_id">
+                    <section>
+                        <h5>{{ device.name }}</h5>
+                        
+                        <button>ON</button>
+                        <button>OFF</button>
+                    </section>
+                </div>
+            </div>
         </section>
     </main>
 </template>
@@ -43,9 +53,13 @@
 <style scoped lang="scss">
     main{
         width: 100vw;
-        min-width: 100vh;
+        min-height: 100vh;
         .environments{
-            width: 98;
+            width: 90vw;
+            min-height: 95vh;
+            background-color: rgb(226, 218, 218);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
     }
 </style>
+
