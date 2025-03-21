@@ -3,7 +3,8 @@
     import DeviceComponent from '../components/DeviceComponent.vue';
 
     const props = defineProps({
-        environment: { type: Environment, required: true }
+        environment: { type: Environment, required: true },
+        showDeviceButtons: { type: Boolean, default: true }
     });
     
 </script>
@@ -12,7 +13,7 @@
     <section class="teste flex flex-column">
         <h3>{{ props.environment.name }}</h3>
         <div v-for="(device, dev_id) in props.environment.devices" :key="dev_id">
-            <DeviceComponent :device="device" />
+            <DeviceComponent :device="device" :showButton="props.showDeviceButtons" />
         </div>
     </section>
 </template>
