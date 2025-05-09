@@ -43,11 +43,16 @@ export class ApiResponse<T,Y> {
 }
 
 export class ApiAttribute<T> {
-    enUs: T|null = null;
+    pt: T|null = null;
 
     constructor(initialValue:T){
-        this.enUs = initialValue;
+        this.pt = initialValue;
     }
+}
+
+
+export class NewEnvironment {
+    name: ApiAttribute<String> = new ApiAttribute("");    
 }
 
 export class NewDevice {
@@ -71,7 +76,7 @@ export const mapApiResponseToEnvironments =
             const environment = new Environment();
             environment.name = item.fields.name;            
             environment.id = item.sys.id;
-            environment.devices = item.fields.devices.map(sysDevice =>{
+            environment.devices = item.fields.devices?.map(sysDevice =>{
                 const device = apiResponse.includes.Entry
                     .find(dev=>dev.sys.id === sysDevice.sys.id);
                 
@@ -87,3 +92,4 @@ export const mapApiResponseToEnvironments =
     });
     return environments;
 }
+

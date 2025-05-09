@@ -5,11 +5,11 @@ import { RouterLink, RouterView, useRouter } from 'vue-router'
 const router = useRouter();
 
 const buttonRouteLabel = computed(()=> 
-      router.currentRoute.value.name === 'Devices'? 
+      router.currentRoute.value.name === 'devices'? 
       'Dispositivos' : 'Gerenciamento');
 
 const changePage = ()=> {
-  if(router.currentRoute.value.name === 'Devices'){
+  if(router.currentRoute.value.name === 'devices'){
     router.push('/management');
     
   }
@@ -20,7 +20,7 @@ const changePage = ()=> {
 </script>
 
 <template>
-  <button @click="changePage"> Página {{ buttonRouteLabel }}</button>
+  <button @click="changePage">Página {{ buttonRouteLabel }}</button>
   <RouterView />
 </template>
 

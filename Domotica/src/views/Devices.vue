@@ -9,14 +9,11 @@
     getEnvironments()
         .then(response=>{
              mapApiResponseToEnvironments(response)
-                .forEach(item=>environments.push(item));
-             
-             console.log("environments", environments);
+                .forEach(item=>environments.push(item));             
         })
         .catch(error=>{
             console.error("Error when getting Environments: ",error);
-        })
-
+        });
     
   </script>
 
@@ -43,3 +40,4 @@
         }
     }
 </style>
+

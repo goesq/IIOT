@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { Device } from '../models/devices'
+import { Device } from '@/models/devices';
 
-const props = defineProps({
-    device: { type: Device, required: true },
-    showButton: { type: Boolean, default: true }
-});
+    const props = defineProps({
+        device: { type: Device, required: true },
+        showButtons: { type: Boolean, default: true }
+    });
 
-const changeDevice = (newState: boolean) => {
-    props.device.state = newState;
-}
+    const changeDevice = (newState: boolean)=> {
+        props.device.state = newState;
+    }
 
+    
 </script>
 
 <template>
-    <section :class="`flex flex-column text-center align-items-center 
+    <section 
+     :class="`flex flex-column text-center align-items-center 
         justify-content-start device-${props.device.state}`">
-        <div v-if="!props.showButton" class="remove-container flex mt-2 justify-content-end align-items-center">
-            <span class="icons material-icons-round">delete</span>
-
+        <div v-if="!props.showButtons" class="remove-container flex mt-2 justify-content-end align-items-center">
+            <span class="icons material-icons-round ">delete</span> 
         </div>
         <div>
-            <h5>{{ props.device.name }}</h5>
-            <span class="icons material-icons-round">{{ props.device.icon }}</span>
-            <div class="flex flex-row" v-if="props.showButton">
+            <h5>{{props.device.name}}</h5>   
+            <span class="icons material-icons-round">{{ props.device.icon }}</span> 
+            <div class="flex flex-row" v-if="props.showButtons">
                 <button class="device-buttons on-button mr-1" @click="changeDevice(true)">ON</button>
                 <button class="device-buttons off-button" @click="changeDevice(false)">OFF</button>
             </div>
@@ -31,20 +32,19 @@ const changeDevice = (newState: boolean) => {
 </template>
 
 <style scoped lang="scss">
-section {
-    background-color: rgb(212, 221, 218);
-    border: 1px solid gray;
-    width: 10rem;
-    height: 7.5rem;
-    margin: 0.5rem;
+    section{
+        background-color: rgb(212, 221, 218);
+        border: 1px solid gray;
+        width: 10rem;
+        height: 7.5rem;
+        margin: 0.5rem;        
+        .icons{
+            width: 1.5rem;
+            margin: 0.5rem;        
+            color: rgb(87, 82, 82);    
+        }
 
-    .icons {
-        width: 1.5rem;
-        margin: 0.5rem;
-        color: rgb(87, 82, 82);
-    }
-
-    .remove-container{
+        .remove-container{
             width: 100%;
             height: 1rem;
             span{
@@ -52,7 +52,7 @@ section {
                 cursor: pointer;
                 &:hover{
                     transform: scale(1.25);
-                    color: rgb(170, 10, 10);
+                    color: rgb(87, 18, 18);
                 }
             }
         }
@@ -64,7 +64,7 @@ section {
         cursor: pointer;  
         &:hover{
           opacity: 0.6;  
-          transform: scale(1.03);
+          transform: scale(1.05);
           transition: 0.5s;        
         }   
     }        

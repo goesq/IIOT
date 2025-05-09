@@ -2,9 +2,9 @@
 
 </script>
 
-<template>
-    <h1> Page Not Found 😒</h1>
-    <img src="https://static-00.iconduck.com/assets.00/404-page-not-found-illustration-2048x998-yjzeuy4v.png"></img>
+<template >
+    <h1>Page not found! 😢</h1>
+    <img src="https://i.pinimg.com/474x/d5/7d/3e/d57d3e369e80c6e37119042ce597461f.jpg" alt="">
 </template>
 
 <style scoped lang="scss">
